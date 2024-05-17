@@ -183,13 +183,13 @@ const BarChart = ({ data, selectedCountries, colorMap }) => {
               ))}
             </select>
           </div>
-          <div style={{ position: 'relative' }}>
+          <div style={{ position: 'relative', overflowX: 'auto' }}>
             <svg ref={svgRef}></svg>
           </div>
           {/* Table */}
           <h1 className='text-center text-3xl m-3'>Total Number of Deaths Country per year (2000 - 2021)</h1>
           <div style={{ width: '100%', overflowX: 'auto', border: '1px solid #ddd', borderRadius: '5px' }}>
-            <table ref={tableRef} style={{ borderCollapse: 'collapse', width: '100%', textAlign: 'center',padding:'15px' }}></table>
+            <table ref={tableRef} style={{ borderCollapse: 'collapse', width: '100%', textAlign: 'center', padding: '15px' }}></table>
           </div>
         </div>
       )}
