@@ -18,8 +18,11 @@ const Dashboard = () => {
       try {
         const jsonData = await d3.json('data.json'); // Fetch data using d3.json
         
-        // Filter data between years 2008 and 2019
+        // Filter data between years 2000 and 2021
         const filteredData = jsonData.filter(item => item.Year >= 2000 && item.Year <= 2021);
+        
+        // Sort the filtered data by Year in ascending order
+        filteredData.sort((a, b) => a.Year - b.Year);
         
         setData(filteredData);
         setDefaultData(filteredData);
@@ -32,7 +35,6 @@ const Dashboard = () => {
         const EU_countries_set = new Set(EU_countries);
         const EU_countries_data = [...countrySet].filter(country => EU_countries_set.has(country));
 
-        
         // Sort countries based on total deaths
         const sortedCountries = EU_countries_data.sort((a, b) => {
           const totalDeathsA = filteredData.filter(item => item.Entity === a).reduce((acc, curr) => acc + curr["Age-standardized deaths that are from malignant neoplasms per 100,000 people, in both sexes aged all ages"], 0);
@@ -89,6 +91,9 @@ const Dashboard = () => {
         d["Age-standardized deaths that are from malignant neoplasms per 100,000 people, in both sexes aged all ages"] = parseFloat(d["Age-standardized deaths that are from malignant neoplasms per 100,000 people, in both sexes aged all ages"]);
         return d;
       });
+
+      // Sort the csvData by Year in ascending order before setting it to the state
+      csvData.sort((a, b) => a.Year - b.Year);
       setData(csvData);
     };
   
