@@ -3,7 +3,8 @@
 # Overview
 This project aims to create an interactive dashboard that visualizes cancer death rate data. The dashboard is designed to help users understand and analyze trends in cancer mortality, identify patterns across different demographics and regions, and provide valuable insights for cancer researchers.
 
-Target User and Use Case
+Target User and Use Case: 
+
 A cancer epidemiologist working at an international health organization. Her research focuses on global cancer trends, with a particular interest in comparing cancer mortality rates across different EU countries to inform international public health strategies.
 
 # Features
