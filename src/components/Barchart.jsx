@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { ClipLoader } from 'react-spinners';
 import * as d3 from 'd3';
 
-const BarChart = ({ data, colorMap }) => {
+const BarChart = ({ data, selectedCountries, colorMap }) => {
   const svgRef = useRef();
   const tableRef = useRef();
   const [loading, setLoading] = useState(true);
@@ -42,7 +42,8 @@ const BarChart = ({ data, colorMap }) => {
       const svg = d3.select(svgRef.current);
       svg.selectAll("*").remove();
 
-      const filteredData = data.filter(item => item.Year === selectedYear);
+      // Filter data for the selected year and selected countries
+      const filteredData = data.filter(item => item.Year === selectedYear && (selectedCountries.length === 0 || selectedCountries.includes(item.Entity)));
       const countries = filteredData.map(d => d.Entity);
       const maxDeathRate = d3.max(filteredData, d => d["Age-standardized deaths that are from malignant neoplasms per 100,000 people, in both sexes aged all ages"]);
 
@@ -96,11 +97,6 @@ const BarChart = ({ data, colorMap }) => {
         .attr("transform", `translate(${width / 2}, ${height + margin.top + 50})`)
         .text("Country");
 
-      // newSvg.append("text")
-      //   .attr("text-anchor", "middle")
-      //   .attr("transform", `translate(${width / 2}, ${height + margin.top + Math.max(...countries.map(country => country.length)) * 200 + 10})`) // Adjusted the y-coordinate dynamically based on the maximum length of country names
-      //   .text("Country");
-
       newSvg.append("text")
         .attr("text-anchor", "middle")
         .attr("transform", `rotate(-90) translate(-${height / 2}, ${-margin.left + 20})`)
@@ -149,7 +145,7 @@ const BarChart = ({ data, colorMap }) => {
 
     updateChart();
     updateTable();
-  }, [data, selectedYear, colorMap]);
+  }, [data, selectedYear, selectedCountries, colorMap]);
 
   const handleYearChange = (event) => {
     setSelectedYear(parseInt(event.target.value));

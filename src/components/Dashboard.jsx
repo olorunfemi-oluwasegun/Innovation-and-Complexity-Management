@@ -129,7 +129,7 @@ const Dashboard = () => {
                 </div>
               </form>
 
-              <BarChart data={data.filter(item => selectedCountries.includes(item.Entity))} colorMap={legendColors} />
+              <BarChart data={data} selectedCountries={selectedCountries} colorMap={legendColors} />
             </div>
           </div>
         </div>
