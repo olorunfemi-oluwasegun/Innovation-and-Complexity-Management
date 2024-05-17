@@ -21,7 +21,7 @@ Backend: Node.js
 
 # Instructions on how to run the application
 
-1. Go to "code" on 
+1. Go to "code" on https://github.com/olorunfemi-oluwasegun/Innovation-and-Complexity-Management
 2. Under code open codespaces
 3. Then "create a codespace on main" to setup the codespaces
 4. Wait for some time for the application to build, upon completion, you will see a "dist" folder
